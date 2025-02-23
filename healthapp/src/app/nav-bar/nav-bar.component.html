@@ -1,1 +1,22 @@
-<h2 class="font-bold underline text-center">This is my NavBar</h2>
+<nav class="bg-gray-900 text-white px-6 py-4 flex justify-between items-center">
+  <!-- Logo -->
+  <div class="text-2xl font-bold">HealthApp</div>
+
+  <!-- Navigation Links -->
+  <ul class="flex space-x-6">
+    <li><a routerLink="/" class="hover:text-yellow-400 transition">Home</a></li>
+    <li>
+      <a routerLink="/about" class="hover:text-yellow-400 transition">About</a>
+    </li>
+    <li>
+      <a routerLink="/services" class="hover:text-yellow-400 transition"
+        >Services</a
+      >
+    </li>
+    <li>
+      <a routerLink="/contact" class="hover:text-yellow-400 transition"
+        >Contact</a
+      >
+    </li>
+  </ul>
+</nav>
