@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormControlDirective, FormGroup, ReactiveFormsModule } from '@angular/forms'
+import { FormControl, FormGroup, Validators } from '@angular/forms'
 import Gender from '../../../commons/gender'
 
 @Component({
@@ -14,17 +14,22 @@ export class FormComponent implements OnInit {
   ngOnInit(): void {
     this.userForm = new FormGroup(
       {
-        name : new FormControl(''),
-        age : new FormControl(''),
-        gender : new FormControl(''),
-        weight : new FormControl(''),
-        height : new FormControl('')
+        name : new FormControl('',[Validators.required,Validators.minLength(2)]),
+        age : new FormControl(0,[Validators.required,Validators.min(1)]),
+        gender : new FormControl('',[Validators.required,Validators.minLength(2)]),
+        weight : new FormControl(0,[Validators.required,Validators.min(10)]),
+        height : new FormControl(0,[Validators.required,Validators.min(50)])
       }
     )
   }
-  
+
   getFormData(){
-    console.log(this.userForm.value);
+    if (this.userForm.valid) {
+      console.log('Form Submitted!');
+    } else {
+      console.log('Form is invalid');
+    }
+    console.log( this.userForm.value);
   }
   
 

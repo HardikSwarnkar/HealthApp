@@ -3,15 +3,15 @@
         <h2 class="text-2xl font-semibold mb-6 text-center text-gray-800">User Information</h2>
         <form [formGroup]="userForm" (ngSubmit)="getFormData()">
             <div class="mb-4">
-                <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name</label>
+                <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name<span class="text-red-600">*</span></label>
                 <input type="text" id="name" class="shadow  border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your name" formControlName="name">
             </div>
             <div class="mb-4">
-                <label for="age" class="block text-gray-700 text-sm font-bold mb-2">Age</label>
+                <label for="age" class="block text-gray-700 text-sm font-bold mb-2">Age<span class="text-red-600">*</span></label>
                 <input type="number" id="age" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your age" formControlName="age">
             </div>
             <div class="mb-4">
-                <label for="gender" class="block text-gray-700 text-sm font-bold mb-2">Gender</label>
+                <label for="gender" class="block text-gray-700 text-sm font-bold mb-2">Gender<span class="text-red-600">*</span></label>
                 <select id="gender" name="Gender" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" formControlName="gender">
                     <option value="" disabled selected>Select your gender</option>
                     <option *ngFor="let gender of genders" [attr.value]="gender">
@@ -20,11 +20,11 @@
                 </select>
             </div>
             <div class="mb-4">
-                <label for="weight" class="block text-gray-700 text-sm font-bold mb-2">Weight</label>
+                <label for="weight" class="block text-gray-700 text-sm font-bold mb-2">Weight <i>(in kg)</i><span class="text-red-600">*</span></label>
                 <input type="number" id="weight" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your weight" formControlName="weight">
             </div>
             <div class="mb-6">
-                <label for="height" class="block text-gray-700 text-sm font-bold mb-2">Height</label>
+                <label for="height" class="block text-gray-700 text-sm font-bold mb-2">Height <i>(in cm)</i><span class="text-red-600">*</span></label>
                 <input type="number" id="height" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline--none focus:shadow-outline" placeholder="Enter your height" formControlName="height">
             </div>
             <div class="flex items-center justify-center">
