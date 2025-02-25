@@ -5,10 +5,12 @@
             <div class="mb-4">
                 <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name<span class="text-red-600">*</span></label>
                 <input type="text" id="name" class="shadow  border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your name" formControlName="name">
+                <span *ngIf="Name && Name.invalid && Name.touched" class="text-red-600 text-center">*Name must have minimum length of 2 characters</span>
             </div>
             <div class="mb-4">
                 <label for="age" class="block text-gray-700 text-sm font-bold mb-2">Age<span class="text-red-600">*</span></label>
                 <input type="number" id="age" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your age" formControlName="age">
+                <span *ngIf="Age && Age.invalid && Age.touched" class="text-red-600 text-center">*Age must be greater then or equal to 1</span>
             </div>
             <div class="mb-4">
                 <label for="gender" class="block text-gray-700 text-sm font-bold mb-2">Gender<span class="text-red-600">*</span></label>
@@ -18,14 +20,17 @@
                         {{gender}}
                     </option>
                 </select>
+                <span *ngIf="Gender && Gender.invalid && Gender.touched" class="text-red-600 text-center">*Please select a gender</span>
             </div>
             <div class="mb-4">
                 <label for="weight" class="block text-gray-700 text-sm font-bold mb-2">Weight <i>(in kg)</i><span class="text-red-600">*</span></label>
                 <input type="number" id="weight" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your weight" formControlName="weight">
+                <span *ngIf="Weight && Weight.invalid && Weight.touched" class="text-red-600 text-center">*Weight must be greater then or equal to 10 Kg</span>
             </div>
             <div class="mb-6">
                 <label for="height" class="block text-gray-700 text-sm font-bold mb-2">Height <i>(in cm)</i><span class="text-red-600">*</span></label>
                 <input type="number" id="height" class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline--none focus:shadow-outline" placeholder="Enter your height" formControlName="height">
+                <span *ngIf="Height && Height.invalid && Height.touched" class="text-red-600 text-center">*Height must be greater then or equal to 50 cm</span>
             </div>
             <div class="flex items-center justify-center">
                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">Submit</button>
