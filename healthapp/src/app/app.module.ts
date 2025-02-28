@@ -5,6 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './Component/nav-bar/nav-bar.component';
 import { FormComponent } from './Component/form/form.component';
+import { UserService } from './Service/user.service';
+import { NgxUiLoaderModule } from 'ngx-ui-loader'
+import { ToastService, AngularToastifyModule } from 'angular-toastify';
 
 @NgModule({
   declarations: [
@@ -15,9 +18,11 @@ import { FormComponent } from './Component/form/form.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxUiLoaderModule, 
+    AngularToastifyModule
   ],
-  providers: [],
+  providers: [UserService,ToastService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

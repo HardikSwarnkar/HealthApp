@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 import Gender from '../../../../commons/gender'
+import { UserService } from '../../Service/user.service'
+import { UserData } from 'src/Model/UserData';
+import { NgxUiLoaderService } from "ngx-ui-loader";
+import { ToastService } from 'angular-toastify';
 
 @Component({
   selector: 'app-form',
@@ -13,6 +17,9 @@ export class FormComponent implements OnInit {
   ngOnInit(): void {
     
   }
+
+  constructor(private userService:UserService, private ngxService: NgxUiLoaderService, private _toasterService: ToastService){}
+
   userForm = new FormGroup(
     {
       name : new FormControl('',[Validators.required,Validators.minLength(2)]),
@@ -22,13 +29,30 @@ export class FormComponent implements OnInit {
       height : new FormControl(0,[Validators.required,Validators.min(50)])
     }
   )
+
   getFormData(){
+    this.ngxService.start();
+    
     if (this.userForm.valid) {
-      console.log('Form Submitted!');
+      const userData = new UserData();
+      userData.Name = this.userForm.value.name
+      userData.Age = this.userForm.value.age
+      userData.Gender = this.userForm.value.gender
+      userData.Weight = this.userForm.value.weight
+      userData.Height = this.userForm.value.height
+      this.userService.getUserInitialData(userData);
+      setTimeout(() => {
+        this.ngxService.stop(); 
+        this._toasterService.success("Information stored successfully");
+      }, 4000);
+
     } else {
+      setTimeout(() => {
+        this.ngxService.stop(); 
+        this._toasterService.error("All fields are required and must be valid");
+      }, 2000);
       console.log('Form is invalid');
     }
-    console.log( this.userForm.value);
   }
   
   get Name(){

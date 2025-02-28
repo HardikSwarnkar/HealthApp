@@ -1,9 +1,9 @@
 export class UserData{
-    public Name : string = " ";
-    public Age : number = 0;
-    public Gender : string = "";
-    public Weight : number = 0;
-    public Height : number = 0;
+    public Name? : string | null ;
+    public Age? : number | null;
+    public Gender? : string | null;
+    public Weight? : number | null;
+    public Height? : number | null;
 
-    public AdditionalInfo? : string;
+    public AdditionalInfo? : string | undefined | null;
 }
