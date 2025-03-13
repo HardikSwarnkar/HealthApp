@@ -5,7 +5,8 @@ import { UserService } from '../../Service/user.service'
 import { UserData } from 'src/Model/UserData';
 import { NgxUiLoaderService } from "ngx-ui-loader";
 import { ToastService } from 'angular-toastify';
-
+import { DataServiceService } from 'src/app/data-service.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -18,7 +19,7 @@ export class FormComponent implements OnInit {
     
   }
 
-  constructor(private userService:UserService, private ngxService: NgxUiLoaderService, private _toasterService: ToastService){}
+  constructor(private userService:UserService, private ngxService: NgxUiLoaderService, private _toasterService: ToastService, private dataService: DataServiceService, private route: Router){}
 
   userForm = new FormGroup(
     {
@@ -41,10 +42,15 @@ export class FormComponent implements OnInit {
       userData.Weight = this.userForm.value.weight
       userData.Height = this.userForm.value.height
       this.userService.getUserInitialData(userData);
+
+      // Adding data to the global data service
+      this.dataService.setUserData(userData); 
       setTimeout(() => {
         this.ngxService.stop(); 
         this._toasterService.success("Information stored successfully");
       }, 4000);
+
+      this.route.navigate(['/Additional-Information']);
 
     } else {
       setTimeout(() => {
